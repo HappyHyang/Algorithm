@@ -16,12 +16,8 @@ public class Main {
 		tokens = new StringTokenizer(input.readLine());
 		for (int n = 0; n < N; n++) {
 			int num = Integer.parseInt(tokens.nextToken());
-			if (min > num) {
-				min = num;
-			}
-			if (max < num) {
-				max = num;
-			}
+			min = Math.min(min, num);
+			max = Math.max(max, num);
 		}
 
 		System.out.println(min + " " + max);
