@@ -9,9 +9,11 @@ public class Main {
 		char[] word = input.readLine().toCharArray();
 		long answer = 0;
 		long pow = 1;
+		int mod = 1234567891;
+
 		for (int i = 0; i < word.length; i++) {
-			answer += (word[i] - 'a' + 1) * pow;
-			pow *= 31;
+			answer = (answer + (word[i] - 'a' + 1) * pow) % mod;
+			pow = (pow * 31) % mod;
 		}
 		System.out.println(answer);
 	}
