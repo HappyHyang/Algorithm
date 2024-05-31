@@ -14,7 +14,11 @@ public class Main {
 
 		int max = 0;
 		for (int i = 0; i < cards.length - 2; i++) {
+			if (cards[i] > M)
+				continue;
 			for (int j = i + 1; j < cards.length - 1; j++) {
+				if (cards[i] + cards[j] > M)
+					continue;
 				for (int k = j + 1; k < cards.length; k++) {
 					int sum = cards[i] + cards[j] + cards[k];
 					if (max < sum && sum <= M) {
