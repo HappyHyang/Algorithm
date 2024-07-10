@@ -29,13 +29,39 @@ public class Main {
 	}
 
 	static int solution() {
-		int answer = 0;
 		String Pn = makePn();
-		for (int i = 0; i <= M - Pn.length(); i++) {
-			if (str.substring(i, i + Pn.length()).equals(Pn)) {
-				answer++;
+		int[] pi = prefix(Pn);
+		int answer = 0;
+		int j = 0;
+
+		for (int i = 0; i < M; i++) {
+			while (j > 0 && str.charAt(i) != Pn.charAt(j)) {
+				j = pi[j - 1];
+			}
+			if (str.charAt(i) == Pn.charAt(j)) {
+				if (j == Pn.length() - 1) {
+					answer++;
+					j = pi[j];
+				} else {
+					j++;
+				}
 			}
 		}
 		return answer;
+	}
+
+	static int[] prefix(String Pn) {
+		int m = Pn.length();
+		int[] pi = new int[m];
+		int j = 0;
+		for (int i = 1; i < m; i++) {
+			while (j > 0 && Pn.charAt(i) != Pn.charAt(j)) {
+				j = pi[j - 1];
+			}
+			if (Pn.charAt(i) == Pn.charAt(j)) {
+				pi[i] = ++j;
+			}
+		}
+		return pi;
 	}
 }
