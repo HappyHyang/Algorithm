@@ -2,17 +2,11 @@ class Solution {
     boolean solution(String s) {
         int pCnt = 0;
         int yCnt = 0;
-        
-        for(char c : s.toCharArray()) {
-            switch (c) {
-                case 'p':
-                case 'P':
-                    pCnt++;
-                    break;
-                case 'y':
-                case 'Y':
-                    yCnt++;
-                    break;
+        for (char c : s.toCharArray()) {
+            if (c == 'p' || c == 'P') {
+                pCnt++;
+            } else if (c == 'y' || c == 'Y') {
+                yCnt++;
             }
         }
         return pCnt == yCnt;
